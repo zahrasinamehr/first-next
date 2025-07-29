@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run TypeScript File",
+			"type": "shell",
+			"command": "npx ts-node \"src/app/(home)/page.tsx\"",
+			"group": "test",
+			"problemMatcher": [
+				"$tsc"
+			]
+		}
+	]
+}
