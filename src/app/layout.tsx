@@ -1,7 +1,8 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ThemeWrapper from "../components/ThemeWrapper";
+import ThemeRegistry from "@/components/ThemeRegistry"; // ✅ adjust import path if needed
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeWrapper>{children}</ThemeWrapper>
+        {/* ✅ Apply Material UI theme */}
+        <ThemeRegistry>{children}</ThemeRegistry>
       </body>
     </html>
   );
