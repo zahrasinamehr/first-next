@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeRegistry from "@/components/ThemeRegistry"; // ✅ adjust import path if needed
+import { Toaster } from "sonner";
+import AuthContextProvider from "@/contexts/AuthContext";
+import Header from "@/components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,8 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* ✅ Apply Material UI theme */}
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <AuthContextProvider initialUser={null}>
+          {/* ✅ Apply Material UI theme */}
+          <ThemeRegistry>
+            <Toaster />
+
+            <Header />
+
+            {children}
+          </ThemeRegistry>
+        </AuthContextProvider>
       </body>
     </html>
   );

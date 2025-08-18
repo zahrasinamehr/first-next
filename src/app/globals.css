@@ -40,3 +40,20 @@ a {
     color-scheme: dark;
   }
 }
+
+.sonner-toast[data-type="success"] {
+  background: var(--mui-palette-success-main, #4caf50) !important;
+  color: var(--mui-palette-success-contrastText, #fff) !important;
+}
+.sonner-toast[data-type="error"] {
+  background: var(--mui-palette-error-main, #f44336) !important;
+  color: var(--mui-palette-error-contrastText, #fff) !important;
+}
+.sonner-toast[data-type="warning"] {
+  background: var(--mui-palette-warning-main, #ff9800) !important;
+  color: var(--mui-palette-warning-contrastText, #fff) !important;
+}
+.sonner-toast[data-type="info"] {
+  background: var(--mui-palette-info-main, #2196f3) !important;
+  color: var(--mui-palette-info-contrastText, #fff) !important;
+}
