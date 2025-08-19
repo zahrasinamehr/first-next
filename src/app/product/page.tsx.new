@@ -1,0 +1,89 @@
+"use client";
+
+import { useCart } from "@/contexts/CartContext";
+import { Container, Card, CardContent, CardMedia, Typography, Button, Box } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
+
+// Mock data for products
+const mockProducts = [
+  {
+    id: "1",
+    title: "Wireless Headphones",
+    price: 99.99,
+    image: "https://source.unsplash.com/400x300/?headphones"
+  },
+  {
+    id: "2",
+    title: "Smart Watch",
+    price: 199.99,
+    image: "https://source.unsplash.com/400x300/?smartwatch"
+  },
+  {
+    id: "3",
+    title: "Laptop",
+    price: 999.99,
+    image: "https://source.unsplash.com/400x300/?laptop"
+  },
+  {
+    id: "4",
+    title: "Smartphone",
+    price: 699.99,
+    image: "https://source.unsplash.com/400x300/?smartphone"
+  },
+  {
+    id: "5",
+    title: "Tablet",
+    price: 449.99,
+    image: "https://source.unsplash.com/400x300/?tablet"
+  },
+  {
+    id: "6",
+    title: "Gaming Console",
+    price: 499.99,
+    image: "https://source.unsplash.com/400x300/?gaming-console"
+  }
+];
+
+export default function ProductPage() {
+  const { add } = useCart();
+
+  return (
+    <Container sx={{ py: 4 }}>
+      <Typography variant="h4" component="h1" gutterBottom>
+        Our Products
+      </Typography>
+      <Grid container spacing={4}>
+        {mockProducts.map((product) => (
+          <Grid key={product.id} xs={12} sm={6} md={4}>
+            <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image={product.image}
+                alt={product.title}
+                sx={{ objectFit: "cover" }}
+              />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h6" component="h2">
+                  {product.title}
+                </Typography>
+                <Typography variant="h6" color="primary">
+                  ${product.price.toFixed(2)}
+                </Typography>
+              </CardContent>
+              <Box sx={{ p: 2 }}>
+                <Button 
+                  variant="contained" 
+                  fullWidth
+                  onClick={() => add(product)}
+                >
+                  Add to Cart
+                </Button>
+              </Box>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
+  );
+}

@@ -6,6 +6,7 @@ import ThemeRegistry from "@/components/ThemeRegistry"; // ✅ adjust import pat
 import { Toaster } from "sonner";
 import AuthContextProvider from "@/contexts/AuthContext";
 import Header from "@/components/Header";
+import CartContextProvider from "@/contexts/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,14 +32,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AuthContextProvider initialUser={null}>
-          {/* ✅ Apply Material UI theme */}
-          <ThemeRegistry>
-            <Toaster />
+          <CartContextProvider>
+            {/* ✅ Apply Material UI theme */}
+            <ThemeRegistry>
+              <Toaster />
 
-            <Header />
+              <Header />
 
-            {children}
-          </ThemeRegistry>
+              {children}
+            </ThemeRegistry>
+          </CartContextProvider>
         </AuthContextProvider>
       </body>
     </html>
